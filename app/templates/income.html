@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Monthly Income</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Tenant</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    {% for payment in payments %}
+    <tr>
+        <td>{{ payment.tenant.name }}</td>
+        <td>₹{{ payment.amount }}</td>
+        <td>{{ payment.date.strftime("%Y-%m-%d") }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

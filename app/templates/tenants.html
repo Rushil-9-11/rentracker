@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tenants</title>
+</head>
+<body>
+    <h1>Tenants</h1>
+    <ul>
+        {% for tenant in tenants %}
+            <li>
+                {{ tenant.name }}
+                {% if tenant.room_number %}
+                    (Room: {{ tenant.room_number }})
+                {% endif %}
+                - {{ 'Active' if tenant.is_active else 'Inactive' }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

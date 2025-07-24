@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Missed Payments</h1>
+<form method="get" action="/missed/view">
+    <label for="month">Select Month (YYYY-MM):</label>
+    <input type="month" id="month" name="month" value="{{ month }}">
+    <input type="submit" value="View">
+</form>
+
+{% if missed %}
+    <h2>Missed Payments for {{ month }}</h2>
+    <ul>
+        {% for tenant in missed %}
+        <li>{{ tenant.name }} (Room: {{ tenant.room_number or "N/A" }})</li>
+        {% endfor %}
+    </ul>
+{% elif month %}
+    <p>No missed payments found for {{ month }}.</p>
+{% endif %}
+{% endblock %}
